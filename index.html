@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<header>
+  <link rel="stylesheet" href="style.css">
+</header>
+<body>
+
+<h2>JavaScript juego Piedra, papel y Tijeras </h2>
+<h3> Tr you luck</h3>
+
+<div id="gridbox"> 
+
+<div id="pc"> 
+
+<div > <h4> Computer:  <span id="pctext"> 0 </span> </h4> </div>
+<br>
+ <p id="pcplay"> (...) </p>
+
+</div>
+
+
+<div id="player" > 
+  
+  <div >  <h4 >  You:  <span id="playertext" >  0  </span> </h4> </div>
+  <br>
+  <p id="playerplay"> (...)  </p>
+
+</div>
+
+</div>
+
+<br> 
+
+<p id="result" > (...)   </p>
+
+<br> 
+
+<div id="buttonbox">  
+
+    <button id="papelB" onclick="playerchoice('papel')">      <img src="papel.jpg" >  </button>
+    <button id="piedraB"  onclick="playerchoice('piedra')">   <img src="piedra.jpg">  </button>
+    <button id="tijerasB" onclick="playerchoice('tijeras')">  <img src="tijeras.jpg">  </button>
+
+</div>
+
+
+
+
+
+<script>
+
+
+var eleccion_ordenador; 
+
+var RS = document.getElementById("result");
+
+var papelB = document.getElementById ("papelB");
+var piedraB = document.getElementById ("piedraB");
+var tijerasB = document.getElementById ("tijerasB");
+
+var Jugadortexto =0;
+var Ordenadortexto =0;
+
+
+function playerchoice(eleccion_jugador){
+
+  pcchoice();
+  
+  resultofthematch (eleccion_jugador );
+
+  playerresult(eleccion_jugador);
+ 
+  actualizarContadores(eleccion_jugador)
+}
+
+
+
+function pcchoice() { 
+var num_random = Math.floor(Math.random()*3)
+if (num_random == 0) {
+    eleccion_ordenador = "piedra";
+  document.getElementById("pcplay").innerHTML="piedra";
+
+}
+if (num_random == 1) {
+   eleccion_ordenador = "papel";
+   document.getElementById("pcplay").innerHTML="papel";
+}
+if (num_random == 2) {
+  eleccion_ordenador = "tijeras";
+  document.getElementById("pcplay").innerHTML="tijeras";
+}
+
+}
+
+
+function playerresult(eleccion_jugador){
+ document.getElementById("playerplay").innerHTML = eleccion_jugador;
+}
+
+function resultofthematch (eleccion_jugador ) { 
+
+if( eleccion_ordenador == eleccion_jugador )
+{
+RS.innerHTML="Draw";
+
+}
+else if (eleccion_ordenador == "papel" && eleccion_jugador  =="piedra")
+{
+result.innerHTML=" PC win";
+Ordenadortexto++;
+}
+
+else if (eleccion_ordenador == "piedra" && eleccion_jugador  =="tijeras" )
+{
+result.innerHTML="PC win";
+Ordenadortexto++;
+}
+
+else if (eleccion_ordenador == "tijeras" && eleccion_jugador  =="papel")
+{
+result.innerHTML=" PC win";
+Ordenadortexto++;
+}
+
+else {
+result.innerHTML=" You Win";
+Jugadortexto++;
+}
+}
+
+
+function actualizarContadores(eleccion_jugador) {
+    document.getElementById("playertext").innerHTML = Jugadortexto;
+    document.getElementById("pctext").innerHTML = Ordenadortexto;
+}
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
